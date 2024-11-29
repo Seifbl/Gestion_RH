@@ -1,0 +1,145 @@
+<div class="card">
+  <div class="card-body">
+    <h6 class="card-title" *ngIf="demandeType === 'demande-conge'">
+      Demande Conge
+    </h6>
+    <h6
+      class="card-title"
+      *ngIf="demandeType === 'demande-attestation-travail'"
+    >
+      Demande Attestation Travail
+    </h6>
+    <h6 class="card-title" *ngIf="demandeType === 'demande-avance-salaire'">
+      Demande Avance Salaire
+    </h6>
+    <h6
+      class="card-title"
+      *ngIf="demandeType === 'demande-remboursment-assurance'"
+    >
+      Demande Remboursement Assurance
+    </h6>
+    <h6 class="card-title" *ngIf="demandeType === 'demande-fiche-de-paie'">
+      Demande Fiche De Paie
+    </h6>
+
+    <form>
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Nom Employee</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          {{ demande.employee.lastName }} {{ demande.employee.name }}
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Date Demande</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          {{ demande.requestDate | date : "dd-MM-yyyy" }}
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Statue</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">{{ demande.status }}</div>
+      </div>
+      <hr />
+
+      <div *ngIf="demandeType === 'demande-conge'">
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Date Debut</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{ demande.startDate | date : "dd-MM-yyyy" }}
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Date Fin</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{ demande.endDate | date : "dd-MM-yyyy" }}
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Type Conge</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{ demande.typeConge }}
+          </div>
+        </div>
+        <hr />
+      </div>
+
+      <div *ngIf="demandeType === 'demande-attestation-travail'">
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Raison</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{ demande.demandeReason }}
+          </div>
+        </div>
+        <hr />
+      </div>
+
+      <div *ngIf="demandeType === 'demande-avance-salaire'">
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Montant</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{ demande.montant }}
+          </div>
+        </div>
+        <hr />
+      </div>
+
+      <div *ngIf="demandeType === 'demande-remboursement-assurance'">
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Fichier</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            <a [href]="demandeDocumentsUrl" target="_blank">{{
+              demande.documentName
+            }}</a>
+          </div>
+        </div>
+        <hr />
+      </div>
+
+      <button type="button" class="btn btn-primary me-2" (click)="onDelete()">
+        Supprimer Demande
+      </button>
+      <button type="button" class="btn btn-primary me-2" (click)="onReturn()">
+        Retour
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary me-2"
+        (click)="getDemandePdf(demandeType, demande)"
+        *ngIf="
+          demande.status === 'Accepté' &&
+          (demandeType === 'demande-attestation-travail' ||
+            demandeType === 'demande-conge' ||
+            demandeType === 'demande-fiche-de-paie')
+        "
+      >
+        Extraire PDF
+      </button>
+
+      <!-- <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+            <br />{{ errorMessage }}
+          </div> -->
+    </form>
+  </div>
+</div>

@@ -1,0 +1,179 @@
+<div class="container">
+  <div class="main-body">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex flex-column align-items-center text-center">
+              <img
+                src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                alt="Admin"
+                class="rounded-circle p-1 bg-primary"
+                width="110"
+              />
+              <div class="mt-3">
+                <h4>{{ employee.name }} {{ employee.lastName }}</h4>
+                <p class="text-secondary mb-1">{{ employee.function }}</p>
+              </div>
+            </div>
+            <hr class="my-4" />
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-body">
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Nom</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nom"
+                  name="nom"
+                  [(ngModel)]="employee.lastName"
+                />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Prénom</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  [(ngModel)]="employee.name"
+                />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Cin</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cin"
+                  name="cin"
+                  [(ngModel)]="employee.cin"
+                />
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Fonction</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fonction"
+                  name="fonction"
+                  [(ngModel)]="employee.function"
+                />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Salaire</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="salaire"
+                  name="salaire"
+                  [(ngModel)]="employee.salary"
+                />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Departement</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <select
+                  formControlName="departement"
+                  id="departement"
+                  class="form-select"
+                  name="departement"
+                  [(ngModel)]="employee.departement.departementId"
+                >
+                  <option [value]="">--Choisissez Un Département--</option>
+                  <option
+                    *ngFor="let departement of departements"
+                    [value]="departement.departementId"
+                  >
+                    {{ departement.departementName }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <!-- <h5 class="fw-bold my-5">Changer votre mot de passe</h5>  -->
+            <!-- <div class="row mb-3">
+              <div class="col-sm-3">
+                <h6 class="mb-0">mot de passe ancien</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="mot de passe ancien"
+                />
+              </div>
+            </div> -->
+            <!-- <div class="row mb-3">
+              <div class="col-sm-3">
+                <h6 class="mb-0">noueveau mot de passe</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="nouveau mot de passe"
+                />
+              </div>
+            </div> -->
+            <!-- <div class="row mb-3">
+              <div class="col-sm-3">
+                <h6 class="mb-0">confirmez mot de passe</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="confirmez mot de passe"
+                />
+              </div>
+            </div> -->
+            <div class="row">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-9 text-secondary">
+                <a class="btn btn-info" (click)="saveUser()">Save changes</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-9 text-secondary mt-3">
+                <a
+                  *ngIf="!employee.appUser"
+                  class="btn btn-info"
+                  (click)="assingUserAccount()"
+                  >Attribuer Un Compte</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

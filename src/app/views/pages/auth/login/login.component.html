@@ -1,0 +1,53 @@
+<div class="row w-100 mx-0 auth-page">
+  <div class="col-md-10 col-xl-8 mx-auto">
+    <div class="card">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="auth-form-wrapper px-4 py-5">
+            <h1>gestion des employés</h1>
+
+            <form class="forms-sample">
+              <div class="mb-3">
+                <label for="username" class="form-label">Username </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  placeholder="Username"
+                  #username
+                  [(ngModel)]="form.username"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Password"
+                  #password
+                  [(ngModel)]="form.password"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </div>
+
+              <div>
+                <button
+                  type="submit"
+                  class="btn btn-primary me-2 mb-2 mb-md-0"
+                  (click)="onLoggedin()"
+                >
+                  Login
+                </button>
+              </div>
+              <div *ngIf="isLoginFailed">
+                <span class="text-danger"> {{ errorMessage }}</span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

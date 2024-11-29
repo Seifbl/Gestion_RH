@@ -1,0 +1,166 @@
+<div class="card">
+  <div class="card-body">
+    <h6 class="card-title">Add New User</h6>
+
+    <form [formGroup]="addEmployeeForm" (ngSubmit)="onSubmit()">
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="Nom">Nom</label>
+        <div class="col-sm-9">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="lastName"
+            id="lastName"
+            name="lastName"
+            [(ngModel)]="employee.lastName"
+            required
+          />
+           <!-- <div class="alert-danger" *ngIf="f.submitted && employee.lastName.invalid">
+            <div *ngIf="employee.lastName?.errors?.required">Username is required</div>
+            <div *ngIf="employee.lastName?.errors?.minlength">
+              Username must be at least 3 characters
+            </div>
+            <div *ngIf="employee.lastName?.errors?.maxlength">
+              Username must be a maximum of 20 characters
+            </div>
+          </div>  -->
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="prenom">Prénom</label>
+        <div class="col-sm-9">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="name"
+            id="name"
+            name="name"
+            [(ngModel)]="employee.name"
+            required
+            minlength="3"
+            maxlength="20"
+          />
+          <!-- <div class="alert-danger" *ngIf="f.submitted && username.invalid">
+            <div *ngIf="username?.errors?.required">prenom is required</div>
+            <div *ngIf="username?.errors?.minlength">
+              Username must be at least 3 characters
+            </div>
+            <div *ngIf="username?.errors?.maxlength">
+              prenoù must be a maximum of 20 characters
+            </div>
+          </div> -->
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="Cin">Cin</label>
+        <div class="col-sm-9">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="cin"
+            id="cin"
+            name="cin"
+            [(ngModel)]="employee.cin"
+            required
+            minlength="8"
+            maxlength="8"
+          />
+          <!-- <div class="alert-danger" *ngIf="f.submitted && username.invalid">
+            <div *ngIf="username?.errors?.required">cin is required</div>
+            <div *ngIf="username?.errors?.minlength">
+              cin must be at least 8 characters
+            </div>
+            <div *ngIf="username?.errors?.maxlength">
+              cin must be a maximum of 8 characters
+            </div>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label for="fonction" class="col-sm-3 col-form-label">Fonction</label>
+        <div class="col-sm-9">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="function"
+            id="function"
+            name="function"
+            [(ngModel)]="employee.function"
+            required
+          />
+          <!-- <div class="alert-danger" *ngIf="f.submitted">
+            <div *ngIf="email?.errors?.required">fonction required</div>
+            <div *ngIf="email?.errors?.email">
+              fonction must be a valid fonction
+            </div>
+          </div> -->
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="salaire" class="col-sm-3 col-form-label">Salaire</label>
+        <div class="col-sm-9">
+          <input
+            class="form-control"
+            type="number"
+            formControlName="salary"
+            id="salary"
+            name="salary"
+            [(ngModel)]="employee.salary"
+            required
+          />
+          <!-- <div class="alert-danger" *ngIf="f.submitted">
+            <div *ngIf="email?.errors?.required">Salaire required</div>
+          </div> -->
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="joindate" class="col-sm-3 col-form-label"
+          >date de rejoint</label
+        >
+        <div class="col-sm-9">
+          <input
+            type="date"
+            class="form-control"
+            formControlName="joinDate"
+            id="joinDate"
+            name="joinDate"
+            [(ngModel)]="employee.joinDate"
+            required
+          />
+          <!-- <div class="alert-danger" *ngIf="f.submitted">
+            <div *ngIf="email?.errors?.required">date de rejoint required</div>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">departement</label>
+
+        <div class="col-sm-9">
+          <select
+            class="form-select"
+            formControlName="departement"
+            id="departement"
+            name="departement"
+            [(ngModel)]="employee.departement.departementId"
+          >
+            <option value="">--Choisissez Un Département--</option>
+            <option
+              *ngFor="let departement of departements"
+              [value]="departement.departementId"
+            >
+              {{ departement.departementName }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary me-2">Submit</button>
+      <button type="reset" class="btn btn-secondary">Cancel</button>
+      <!-- <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        <br />{{ errorMessage }}
+      </div> -->
+    </form>
+  </div>
+</div>

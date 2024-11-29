@@ -1,0 +1,87 @@
+<div class="card">
+  <div class="card-body">
+
+    <h6 class="card-title">Update User</h6>
+
+
+    <form
+      *ngIf=""
+      name="form"
+      (ngSubmit)="f.form.valid "
+      #f="ngForm"
+      novalidate
+    >
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="username">Username</label>
+        <div class="col-sm-9">
+
+          <input class="form-control" type="text" placeholder="username"  id="username" ngModel name="username" #username="ngModel"
+                 
+                 required
+                 minlength="3"
+                 maxlength="20" />
+          <div class="alert-danger" *ngIf="f.submitted && username.invalid">
+            <div *ngIf="username?.errors?.required">
+              Username is required</div>
+            <div *ngIf="username?.errors?.minlength">
+              Username must be at least 3 characters</div>
+            <div *ngIf="username?.errors?.maxlength">
+              Username must be a maximum of 20 characters</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row mb-3">
+        <label for="email" class="col-sm-3 col-form-label">Email</label>
+        <div class="col-sm-9">
+          <input type="email" class="form-control" name="email" ngModel id="email"  placeholder="Email"
+                 #email="ngModel"
+               required>
+          <div class="alert-danger" *ngIf="f.submitted">
+            <div *ngIf="email?.errors?.required">Email requis</div>
+            <div *ngIf="email?.errors?.email">
+              Email must be a valid email address
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label for="password" class="col-sm-3 col-form-label">Password</label>
+        <div class="col-sm-9">
+          <input type="password" class="form-control" name="password" ngModel id="password" autocomplete="off"
+                 #password="ngModel" required
+                 minlength="6"
+                >
+          <div class="alert-danger" *ngIf="f.submitted && password.invalid">
+            <div *ngIf="password?.errors?.required">Mot de passe requis</div>
+            <div *ngIf="password?.errors?.minlength">
+              Password must be at least 6 characters
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="role" class="col-sm-3 col-form-label">Role</label>
+        <div class="col-sm-9">
+          <ng-select 
+                     bindLabel="name"
+                     bindValue="id"
+                     placeholder="Select cities"
+                     (change)="addCustomUser($event)"
+                    required>
+          </ng-select>
+        </div>
+      </div>
+
+
+      <button type="submit" class="btn btn-primary me-2" >Submit</button>
+      <button type="reset" class="btn btn-secondary">Cancel</button>
+      <div class="alert alert-warning" *ngIf="f.submitted">
+        <br />
+      </div>
+    </form>
+
+  </div>
+</div>

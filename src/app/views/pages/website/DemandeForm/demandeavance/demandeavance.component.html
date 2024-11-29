@@ -1,0 +1,38 @@
+<div class="card">
+  <div class="card-body">
+    <h6 class="card-title">Demande Avance salaire</h6>
+
+    <form [formGroup]="DemandeAvanceSalaireForm" (ngSubmit)="onSubmit()">
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="Montant">Montant</label>
+        <div class="col-sm-9">
+          <input
+            class="form-control"
+            type="number"
+            formControlName="montantAvance"
+            id="montantAvance"
+            name="montantAvance"
+            [(ngModel)]="demandeAvanceSalaire.montant"
+            required
+    
+          />
+          <!-- <div class="alert-danger" *ngIf="f.submitted && username.invalid">
+            <div *ngIf="username?.errors?.required">montant is required</div>
+            <div *ngIf="username?.errors?.minlength">
+              Username must be at least 3 characters
+            </div>
+            <div *ngIf="username?.errors?.maxlength">
+              Username must be a maximum of 3 characters
+            </div>
+          </div> -->
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary me-2">Submit</button>
+      <button type="reset" class="btn btn-secondary">Cancel</button>
+      <!-- <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        <br />{{ errorMessage }}
+      </div> -->
+    </form>
+  </div>
+</div>

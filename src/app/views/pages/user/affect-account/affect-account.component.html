@@ -1,0 +1,65 @@
+<div class="card">
+  <div class="card-body">
+    <h6 class="card-title">Add New departement</h6>
+
+    <form [formGroup]="addAccountEmployeeForm" (ngSubmit)="onSubmit()">
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="username"
+          >Nom Utilisateur</label
+        >
+        <div class="col-sm-9">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="username"
+            id="username"
+            name="username"
+            [(ngModel)]="appUser.username"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="password"
+          >Mot De Passe</label
+        >
+        <div class="col-sm-9">
+          <input
+            class="form-control"
+            type="password"
+            formControlName="password"
+            id="password"
+            name="password"
+            [(ngModel)]="appUser.password"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="role">Role</label>
+        <div class="col-sm-9">
+          <select
+            class="form-select"
+            formControlName="role"
+            id="role"
+            name="role"
+            [(ngModel)]="selectedRole"
+          >
+            <option value="">--Choisissez Une Role--</option>
+            <option *ngFor="let role of roles" [value]="role">
+              {{ role }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary me-2">Submit</button>
+      <button type="reset" class="btn btn-secondary">Cancel</button>
+      <!-- <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          <br />{{ errorMessage }}
+        </div> -->
+    </form>
+  </div>
+</div>

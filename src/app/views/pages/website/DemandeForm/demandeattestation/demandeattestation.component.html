@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-body">
+    <h6 class="card-title">Demande attestation</h6>
+
+    <form [formGroup]="demandeAttestationTravailForm" (ngSubmit)="onSubmit()">
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="DemandeReason"
+          >Raison / Motif :</label
+        >
+        <div class="col-sm-9">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="demandeReason"
+            id="demandeReason"
+            name="demandeReason"
+            [(ngModel)]="demandeAttestationTravail.demandeReason"
+            required
+          />
+          <!-- <div class="alert-danger" *ngIf="f.submitted && username.invalid">
+            <div *ngIf="username?.errors?.required">Username is required</div>
+            <div *ngIf="username?.errors?.minlength">
+              Username must be at least 3 characters
+            </div>
+            <div *ngIf="username?.errors?.maxlength">
+              Username must be a maximum of 20 characters
+            </div>
+          </div> -->
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary me-2">Submit</button>
+      <button type="reset" class="btn btn-secondary">Cancel</button>
+      <!-- <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        <br />{{ errorMessage }}
+      </div> -->
+    </form>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="card">
+  <div class="card-body">
+    <h6 class="card-title">demande de congé</h6>
+
+    <form [formGroup]="demandeCongeForm" (ngSubmit)="onSubmit()">
+      <div class="row mb-3">
+        <label for="startdate" class="col-sm-3 col-form-label"
+          >Date début</label
+        >
+        <div class="col-sm-9">
+          <input
+       
+            class="form-control"
+            type="date"
+            formControlName="startDate"
+            id="startDate"
+            name="startDate"
+            [(ngModel)]="demandeConge.startDate"
+            required
+    
+          />
+          <!-- <div class="alert-danger" *ngIf="f.submitted">
+            <div *ngIf="email?.errors?.required">date début</div>
+          </div> -->
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="enddate" class="col-sm-3 col-form-label">Date fin</label>
+        <div class="col-sm-9">
+          <input
+           
+            class="form-control"
+            type="date"
+            formControlName="endDate"
+            id="endDate"
+            name="endDate"
+            [(ngModel)]="demandeConge.endDate"
+            required
+    
+          />
+          <!-- <div class="alert-danger" *ngIf="f.submitted">
+            <div *ngIf="email?.errors?.required">date début</div>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label" for="type">Type</label>
+        <div class="col-sm-9">
+          <input
+            class="form-control"
+            type="text"
+        formControlName="typeConge"
+        id="typeConge"
+        name="typeConge"
+        [(ngModel)]="demandeConge.typeConge"
+        required
+
+          />
+          <!-- <div class="alert-danger" *ngIf="f.submitted && username.invalid">
+            <div *ngIf="username?.errors?.required">type is required</div>
+            <div *ngIf="username?.errors?.minlength">
+              type must be at least 3 characters
+            </div>
+            <div *ngIf="username?.errors?.maxlength">
+              type must be a maximum of 20 characters
+            </div>
+          </div> -->
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary me-2">Submit</button>
+      <button type="reset" class="btn btn-secondary">Cancel</button>
+      <!-- <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        <br />{{ errorMessage }}
+      </div> -->
+    </form>
+  </div>
+</div>
